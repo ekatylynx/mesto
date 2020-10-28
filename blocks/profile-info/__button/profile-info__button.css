@@ -1,0 +1,9 @@
+.profile-info__button {
+  background-image: url(../../../images/profile-edit-image.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+  background-color: black;
+  border: 1px solid white;
+}

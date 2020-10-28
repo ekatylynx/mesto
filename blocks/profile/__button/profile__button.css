@@ -1,0 +1,16 @@
+.profile__button {
+  width: 150px;
+  height: 50px;
+  background-image: url(../../../images/profile-add-image.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: black;
+  border: 2px solid white;
+}
+
+@media screen and (max-width: 1079px) {
+  .profile__button {
+    margin: 0 auto;
+    width: 282px;
+  } 
+}
