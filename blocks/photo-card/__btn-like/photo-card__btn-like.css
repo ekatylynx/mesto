@@ -1,0 +1,10 @@
+.photo-card__btn-like {
+  background-image: url(../../../images/like_image.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 0;
+  background-color: white;
+  width: 21px;
+  height: 19px;
+  margin-right: 18px;
+}

@@ -1,0 +1,11 @@
+.photo-card__wrapper {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 23px;
+  padding-bottom: 31px;
+  height: 23px;
+}

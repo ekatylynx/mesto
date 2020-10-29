@@ -14,3 +14,12 @@
 @import url(../blocks/profile-info/__name/profile-info__name.css);
 @import url(../blocks/profile-info/__button/profile-info__button.css);
 @import url(../blocks/profile-info/__description/profile-info__description.css);
+@import url(../blocks/photogallery/photogallery.css);
+@import url(../blocks/photogallery/__wrapper/photogallery__wrapper.css);
+@import url(../blocks/photo-card/photo-card.css);
+@import url(../blocks/photo-card/__image/photo-card__image.css);
+@import url(../blocks/photo-card/__wrapper/photo-card__wrapper.css);
+@import url(../blocks/photo-card/__title/photo-card__title.css);
+@import url(../blocks/photo-card/__btn-like/photo-card__btn-like.css);
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);

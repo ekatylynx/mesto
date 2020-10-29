@@ -1,0 +1,12 @@
+.photogallery {
+  margin: 0 auto;
+  width: calc(100% - 200px * 2);
+  margin-top: 47px;
+  margin-bottom: 67px;
+}
+
+@media screen and (max-width: 1079px) {
+  .photogallery {
+    width: calc(100% - 70px * 2);
+  }
+  }
