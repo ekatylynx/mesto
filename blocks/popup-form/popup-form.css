@@ -1,0 +1,8 @@
+.popup-form {
+  display: block;
+  margin: 0 auto;
+  padding: 0;
+  border: none;
+  /* width: calc(100% - 36px * 2); */
+  display: flex;
+}

@@ -6,3 +6,9 @@
   font-weight: 400;
   color: #545454;
 }
+
+@media screen and (max-width: 767px) {
+  .footer__copyright {
+    margin-left: 19px;
+  }
+  }

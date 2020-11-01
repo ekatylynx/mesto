@@ -7,9 +7,22 @@
     <meta name="keywords" content="russia, travel">
     <meta name="author" content="Hitomizavr">
     <link rel="stylesheet" href="./pages/index.css">
-    <title>Document</title>
+    <title>Mesto Russia</title>
 </head>
 <body class="root">
+<section class="popup">
+    <form class="popup__container">
+        <button class="popup__btn-close" type="button"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <fieldset class="popup-form">
+            <input class="popup-form__name" type="text">
+            <input class="popup-form__description" type="text">
+            <button class="popup-form__btn-submit" type="submit">Сохранить</button>
+        </fieldset>
+    </form>
+</section>
+
+
     <div class="page">
         <header class="header">
             <img class="header__logo" src="./images/header-logo_white.svg">
@@ -22,11 +35,11 @@
                     <div class="profile-info">
                         <div class="profile-info__wrapper">
                             <h1 class="profile-info__name">Жак-Ив Кусто</h1>
-                            <button class="profile-info__button" type="button"></button>
+                            <button class="profile-info__btn-edit" type="button"></button>
                         </div>
                         <p class="profile-info__description">Исследователь океана</p>
                     </div>
-                    <button class="profile__button" type="button"></button>
+                    <button class="profile__btn-add" type="button"></button>
                 </div>
     
             </section>
@@ -83,5 +96,6 @@
           <p class="footer__copyright">&copy; 2020. Mesto Russia</p>
         </footer>
     </div>
+    <script src="./script/script.js"></script>
 </body>
 </html>

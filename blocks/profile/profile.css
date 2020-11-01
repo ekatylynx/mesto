@@ -13,3 +13,9 @@
     width: 100%;
   }
   }
+
+  @media screen and (max-width: 450px) {
+    .profile {
+      margin-top: 38px;
+    }
+    }

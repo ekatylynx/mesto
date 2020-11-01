@@ -1,25 +1,42 @@
 @import url(../vendor/normalize.css);
 @import url(../fonts/fonts.css);
 @import url(../blocks/root/root.css);
+    /* PopUp Profile */
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__btn-close/popup__btn-close.css);
+@import url(../blocks/popup/__title/popup__title.css);
+    /* PopUp Form */
+@import url(../blocks/popup-form/popup-form.css);
+@import url(../blocks/popup-form/__name/popup-form__name.css);
+@import url(../blocks/popup-form/__description/popup-form__description.css);
+@import url(../blocks/popup-form/__btn-submit/popup-form__btn-submit.css);
+    /* Page */
 @import url(../blocks/page/page.css);
-@import url(../blocks/page/page.css);
+    /* Header */
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
+    /* Profile */
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__wrapper/profile__wrapper.css);
-@import url(../blocks/profile/__button/profile__button.css);
+@import url(../blocks/profile/__btn-add/profile__btn-add.css);
+    /* Profile Info */
 @import url(../blocks/profile-info/profile-info.css);
 @import url(../blocks/profile-info/__wrapper/profile-info__wrapper.css);
 @import url(../blocks/profile-info/__name/profile-info__name.css);
-@import url(../blocks/profile-info/__button/profile-info__button.css);
+@import url(../blocks/profile-info/__btn-edit/profile-info__btn-edit.css);
 @import url(../blocks/profile-info/__description/profile-info__description.css);
+    /* Photogallery */
 @import url(../blocks/photogallery/photogallery.css);
 @import url(../blocks/photogallery/__wrapper/photogallery__wrapper.css);
+    /* Photo-card */
 @import url(../blocks/photo-card/photo-card.css);
 @import url(../blocks/photo-card/__image/photo-card__image.css);
 @import url(../blocks/photo-card/__wrapper/photo-card__wrapper.css);
 @import url(../blocks/photo-card/__title/photo-card__title.css);
 @import url(../blocks/photo-card/__btn-like/photo-card__btn-like.css);
+    /* Footer */
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
