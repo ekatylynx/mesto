@@ -17,6 +17,8 @@
 * технологии адаптивности и медиа-запросы;     
 * java script для создания функционала интерактивности;      
 
+ 
+### Source  
 
 **Figma**
 
@@ -28,4 +30,10 @@
 
 **GitHub Pages**
 
-* [Ссылка на сайт в GH Pages](https://hitomizavr.github.io/mesto/index.html)
+* [Ссылка на сайт в GH Pages](https://hitomizavr.github.io/mesto/index.html)  
+
+### Доработки на будущее
+
+1. Для всех кнопок можно использовать одну сущность, например, button. И добавить ей модификаторы, например  button_type_like, button_type_add-card и т.д.    
+2. Сделать плавные анимации появления для всех popup-окон.     
+3. ...   

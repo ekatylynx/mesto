@@ -10,26 +10,25 @@
     <title>Mesto Russia</title>
 </head>
 <body class="root">
-<section class="popup">
-    <form class="popup__container">
-        <button class="popup__btn-close" type="button"></button>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <fieldset class="popup-form">
-            <input class="popup-form__name" type="text">
-            <input class="popup-form__description" type="text">
-            <button class="popup-form__btn-submit" type="submit">Сохранить</button>
-        </fieldset>
-    </form>
-</section>
-
+    <section class="popup">
+        <div class="popup__container">
+            <h2 class="popup__title">Редактировать профиль</h2>
+            <button class="popup__btn-close" type="button"></button>
+            <form name="popup-form" name="popup-form">
+                <input class="popup-form-input popup-form__name" type="text" name="popup-form-name">
+                <input class="popup-form-input popup-form__description" type="text" name="popup-form-about">
+                <button class="popup-form__btn-submit" type="submit">Сохранить</button>
+            </form>
+        </div>
+    </section>
 
     <div class="page">
         <header class="header">
             <img class="header__logo" src="./images/header-logo_white.svg" alt="Логотип сайта">
         </header>
+
         <main class="content">
             <section class ="profile">
-
                 <img class="profile__avatar" src="images/profile-avatar.png" alt="Аватар профиля">
                 <div class="profile__wrapper">
                     <div class="profile-info">
@@ -50,42 +49,42 @@
                         <img class="photo-card__image" src="./images/karachaevsk_image.png" alt="Карачаевск">
                         <div class="photo-card__wrapper">
                             <h2 class="photo-card__title">Карачаевск</h2>
-                            <button class="photo-card__btn-like"></button>
+                            <button class="photo-card__btn-like" type="button"></button>
                         </div>
                     </li>
                     <li class="photo-card">
                         <img class="photo-card__image" src="./images/elbrus_image.png" alt="Эльбрус">
                         <div class="photo-card__wrapper">
                             <h2 class="photo-card__title">Гора Эльбрус</h2>
-                            <button class="photo-card__btn-like"></button>
+                            <button class="photo-card__btn-like" type="button"></button>
                         </div>
                     </li>
                     <li class="photo-card">
                         <img class="photo-card__image" src="./images/dombai_image.png" alt="Домбай">
                         <div class="photo-card__wrapper">
                             <h2 class="photo-card__title">Домбай</h2>
-                            <button class="photo-card__btn-like"></button>
+                            <button class="photo-card__btn-like" type="button"></button>
                         </div>
                     </li>
                     <li class="photo-card">
                         <img class="photo-card__image" src="./images/elbrus_image.png" alt="Эльбрус">
                         <div class="photo-card__wrapper">
                             <h2 class="photo-card__title">Гора Эльбрус</h2>
-                            <button class="photo-card__btn-like"></button>
+                            <button class="photo-card__btn-like" type="button"></button>
                         </div>
                     </li>
                     <li class="photo-card">
                         <img class="photo-card__image" src="./images/dombai_image.png" alt="Домбай">
                         <div class="photo-card__wrapper">
                             <h2 class="photo-card__title">Домбай</h2>
-                            <button class="photo-card__btn-like"></button>
+                            <button class="photo-card__btn-like" type="button"></button>
                         </div>
                     </li>
                     <li class="photo-card">
                         <img class="photo-card__image" src="./images/karachaevsk_image.png" alt="Карачаевск">
                         <div class="photo-card__wrapper">
                             <h2 class="photo-card__title">Карачаево-Ч...</h2>
-                            <button class="photo-card__btn-like"></button>
+                            <button class="photo-card__btn-like" type="button"></button>
                         </div>
                     </li>
                 </ul>
