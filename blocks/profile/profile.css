@@ -9,7 +9,7 @@
 @media screen and (max-width: 1079px) {
   .profile {
     justify-content: center;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
     width: 100%;
   }
   }
