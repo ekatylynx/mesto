@@ -1,8 +1,8 @@
-.popup-form__input_name {
+.popup-form__input_field_name {
   margin-bottom: 30px;
 }
   @media screen and (max-width: 799px) {
-    .popup-form__input_name {
+    .popup-form__input_field_name {
       width: 100%;
     }
     }
