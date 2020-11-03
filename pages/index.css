@@ -8,10 +8,10 @@
 @import url(../blocks/popup/__btn-close/popup__btn-close.css);
 @import url(../blocks/popup/__title/popup__title.css);
     /* PopUp Form */
-@import url(../blocks/popup-form-input/popup-form-input.css);     /* Общие стили для popup-form__name and description */
 @import url(../blocks/popup-form/popup-form.css);
-@import url(../blocks/popup-form/__name/popup-form__name.css);
-@import url(../blocks/popup-form/__description/popup-form__description.css);
+@import url(../blocks/popup-form/__input/popup-form__input.css);     /* Общие стили для popup-form__name and description */
+@import url(../blocks/popup-form/__input/_name/popup-form__input_name.css);
+@import url(../blocks/popup-form/__input/_description/popup-form__input_description.css);
 @import url(../blocks/popup-form/__btn-submit/popup-form__btn-submit.css);
     /* Page */
 @import url(../blocks/page/page.css);
