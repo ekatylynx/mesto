@@ -1,12 +1,11 @@
-.photo-card__btn-like {
+.photo-card__btn-like_active {
   padding: 11px;
-  background-image: url("../../../images/like_image.svg");
+  background-image: url("../../../../images/like_image_active.svg");
   background-repeat: no-repeat;
   background-position: center;
   border: 0;
   background-color: transparent;
   width: 21px;
-  cursor: pointer;
   height: 19px;
   margin-right: 18px;
   transition: opacity .4s ease;
@@ -14,5 +13,6 @@
 }
 
 .photo-card__btn-like:hover {
+  transform: scale(1.3);
   opacity: .5;
 }

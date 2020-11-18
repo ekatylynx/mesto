@@ -1,4 +1,6 @@
 .photo-card {
   background-color: rgb(255, 255, 255);
   border-radius: 10px;
+  overflow: hidden;
+  position: relative;
 }

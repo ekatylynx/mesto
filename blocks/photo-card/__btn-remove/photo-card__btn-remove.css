@@ -1,0 +1,19 @@
+.photo-card__btn-remove {
+  position: absolute;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(../../../images/photo-card__btn-removes.svg);
+  width: 18px;
+  height: 20px;
+  border: 0;
+  background-color: transparent;
+  transition: opacity .4s ease;
+  top: 18px;
+  cursor: pointer;
+  right: 18px;
+}
+
+.photo-card__btn-remove:hover {
+  transform: scale(1.1);
+  opacity: .5;
+}

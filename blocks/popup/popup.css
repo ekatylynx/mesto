@@ -3,7 +3,9 @@
   height: 100%;
   position: fixed;
   background:rgba(0,0,0,.7);
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
   align-items: center;
   justify-content: center;
   z-index: 3;

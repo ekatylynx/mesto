@@ -10,7 +10,10 @@
     <title>Mesto Russia</title>
 </head>
 <body class="root">
-    <section class="popup">
+
+ <!-- Попап редактирования профиля  -->
+
+    <section class="popup popup-edit">
         <div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <button class="popup__btn-close" type="button"></button>
@@ -19,6 +22,31 @@
                 <input class="popup-form__input popup-form__input_field_description" type="text" name="popup-form-about">
                 <button class="popup-form__btn-submit" type="submit">Сохранить</button>
             </form>
+        </div>
+    </section>
+
+    <!-- Попап добавления карточки  -->
+    
+    <section class="popup popup-create">
+        <div class="popup__container">
+            <h2 class="popup__title">Новое место</h2>
+            <button class="popup__btn-close" type="button"></button>
+            <form class="popup-form" name="popup-forms">
+                <input class="popup-form__input popup-form__input_field_name" type="text" name="popup-form-name" placeholder="Название">
+                <input class="popup-form__input popup-form__input_field_description" type="text" name="popup-form-about" placeholder="Ссылка на картинку">
+                <button class="popup-form__btn-submit" type="submit">Создать</button>
+            </form>
+        </div>
+    </section>
+
+    <section class="popup popup-image">
+        <div class="popup-image__container">
+            <div class="popup-image__wrapper">
+                <button class="popup__btn-close popup__btn-close_type_image"></button>
+                <img class="popup-image__image" src="./images/road_images.jpeg">
+                <h3 class="popup-image__caption">Мяумяу мяу</h3>
+            </div>
+                
         </div>
     </section>
 
@@ -45,51 +73,20 @@
             
             <section class="photogallery">
                 <ul class="photogallery__wrapper">
-                    <li class="photo-card">
-                        <img class="photo-card__image" src="./images/karachaevsk_image.png" alt="Карачаевск">
-                        <div class="photo-card__wrapper">
-                            <h2 class="photo-card__title">Карачаевск</h2>
-                            <button class="photo-card__btn-like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="photo-card">
-                        <img class="photo-card__image" src="./images/elbrus_image.png" alt="Эльбрус">
-                        <div class="photo-card__wrapper">
-                            <h2 class="photo-card__title">Гора Эльбрус</h2>
-                            <button class="photo-card__btn-like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="photo-card">
-                        <img class="photo-card__image" src="./images/dombai_image.png" alt="Домбай">
-                        <div class="photo-card__wrapper">
-                            <h2 class="photo-card__title">Домбай</h2>
-                            <button class="photo-card__btn-like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="photo-card">
-                        <img class="photo-card__image" src="./images/elbrus_image.png" alt="Эльбрус">
-                        <div class="photo-card__wrapper">
-                            <h2 class="photo-card__title">Гора Эльбрус</h2>
-                            <button class="photo-card__btn-like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="photo-card">
-                        <img class="photo-card__image" src="./images/dombai_image.png" alt="Домбай">
-                        <div class="photo-card__wrapper">
-                            <h2 class="photo-card__title">Домбай</h2>
-                            <button class="photo-card__btn-like" type="button"></button>
-                        </div>
-                    </li>
-                    <li class="photo-card">
-                        <img class="photo-card__image" src="./images/karachaevsk_image.png" alt="Карачаевск">
-                        <div class="photo-card__wrapper">
-                            <h2 class="photo-card__title">Карачаево-Ч...</h2>
-                            <button class="photo-card__btn-like" type="button"></button>
-                        </div>
-                    </li>
                 </ul>
             </section>
         </main>
+
+        <template id="photo-card">
+            <div class="photo-card">
+                <button class="photo-card__btn-remove" type="button"></button>
+                <img class="photo-card__image" src="./images/karachaevsk_image.png" alt="Карачаевск">
+                <div class="photo-card__wrapper">
+                    <h2 class="photo-card__title">Карачаевск</h2>
+                    <button class="photo-card__btn-like" type="button"></button>
+                </div>
+            </div>
+        </template>
         
         <footer class="footer">
           <p class="footer__copyright">&copy; 2020. Mesto Russia</p>

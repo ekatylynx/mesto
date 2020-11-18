@@ -1,0 +1,10 @@
+.popup-image__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75vw;
+  height: 75vh;
+  object-fit: contain;
+  border-style: none;
+flex-direction: column;
+}
