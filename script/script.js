@@ -28,7 +28,6 @@ const popupOpenImage = document.querySelector('.popup-image__image');
 const popupCaption = document.querySelector('.popup-image__caption');
 
 
-
 const initialCards = [
     {
         name: 'Архыз',
@@ -61,6 +60,9 @@ const initialCards = [
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
+    const overlay = document.querySelector('.popup_opened');
+    overlay.addEventListener('click', popupClickHandler);
+    document.addEventListener('keyup', popupClickEscHandler);
 }
 
 // Добавить карточку в конец
@@ -87,11 +89,28 @@ function closePopup(popup) {
 
 popups.forEach(function (popup) {
     const btnCloses = popup.querySelector('.popup__btn-close');
+    const overlay = document.querySelector('.popup_opened');
 
     btnCloses.addEventListener('click', function(event) {
         closePopup(popup);
     });
 });
+
+function popupClickEscHandler(event) {
+    if (event.key === 'Escape') {
+        const overlay = document.querySelector('.popup_opened');
+        closePopup(overlay);
+    }
+}
+
+// Закрытие попапа на клик по оверлею
+
+function popupClickHandler(event) {
+    if (event.target.classList.contains('popup')) {
+        const overlay = document.querySelector('.popup_opened');
+        closePopup(overlay);
+    }
+}
 
 
 // Функция создания карточки с городом и возвращение;
