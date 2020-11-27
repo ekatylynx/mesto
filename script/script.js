@@ -81,7 +81,10 @@ initialCards.forEach(addCardToEnd);
 // Функция закрытия попапа;
 
 function closePopup(popup) {
-    popup.classList.remove('popup_opened');
+    if (popup) {
+        popup.classList.remove('popup_opened');
+    }
+    
 };
 
 
@@ -111,6 +114,7 @@ function popupClickHandler(event) {
         closePopup(overlay);
     }
 }
+
 
 
 // Функция создания карточки с городом и возвращение;

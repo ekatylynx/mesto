@@ -20,14 +20,6 @@ const checkInputValidity = (form, input, config) => {
     }
 }
 
-// formElements.forEach((popup) => {
-//     const inputs = popup.querySelectorAll('.popup-form__input');
-
-//     popups.forEach((input) => {
-//         input.addEventListener('input', checkInputValidity);
-//     });
-// });
-
 function setButtonState(button, isActive, config) {
     if (isActive) {
         button.classList.remove(config.buttonInvalidClass);
@@ -54,10 +46,6 @@ function enableValidation(config) {
     const forms = document.querySelectorAll(config.formSelector);
     forms.forEach((form) => {
         setEventListeners(form, config);
-
-        form.addEventListener('submit', (evt) => {
-            evt.preventDefault();
-        });
 
         const submitButton = form.querySelector(config.submitButtonSelector);
         setButtonState(submitButton, form.checkValidity(), config)
