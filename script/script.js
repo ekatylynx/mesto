@@ -27,6 +27,8 @@ const popupImage = document.querySelector('.popup.popup-image');
 const popupOpenImage = document.querySelector('.popup-image__image');
 const popupCaption = document.querySelector('.popup-image__caption');
 
+
+
 const initialCards = [
     {
         name: 'Архыз',

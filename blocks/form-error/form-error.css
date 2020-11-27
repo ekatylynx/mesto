@@ -1,0 +1,9 @@
+.form-error {
+  font-size: 12px;
+  line-height: 14px;
+  color: red;
+  display: block;
+  margin-top: 5px;
+  box-sizing: border-box;
+  height: 26px;
+}
