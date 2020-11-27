@@ -60,9 +60,8 @@ const initialCards = [
 
 function openPopup(popup) {
     popup.classList.add('popup_opened');
-    const overlay = document.querySelector('.popup_opened');
-    overlay.addEventListener('click', popupClickHandler);
-    document.addEventListener('keyup', popupClickEscHandler);
+    popup.addEventListener('click', closeByOverlayClick);
+    document.addEventListener('keyup', closeByEscape);
 }
 
 // Добавить карточку в конец
@@ -83,39 +82,35 @@ initialCards.forEach(addCardToEnd);
 function closePopup(popup) {
     if (popup) {
         popup.classList.remove('popup_opened');
+        popup.removeEventListener('click', closeByOverlayClick);
+        document.removeEventListener('keyup', closeByEscape);
     }
-    
 };
-
 
 // Закрытие попапа на клик по кнопке;
 
 popups.forEach(function (popup) {
     const btnCloses = popup.querySelector('.popup__btn-close');
-    const overlay = document.querySelector('.popup_opened');
 
     btnCloses.addEventListener('click', function(event) {
         closePopup(popup);
     });
 });
 
-function popupClickEscHandler(event) {
+function closeByEscape(event) { 
     if (event.key === 'Escape') {
-        const overlay = document.querySelector('.popup_opened');
-        closePopup(overlay);
+        const popup = document.querySelector('.popup_opened');
+        closePopup(popup);
     }
 }
 
 // Закрытие попапа на клик по оверлею
 
-function popupClickHandler(event) {
+function closeByOverlayClick(event) {
     if (event.target.classList.contains('popup')) {
-        const overlay = document.querySelector('.popup_opened');
-        closePopup(overlay);
+        closePopup(event.target);
     }
 }
-
-
 
 // Функция создания карточки с городом и возвращение;
 

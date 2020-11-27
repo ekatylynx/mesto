@@ -1,12 +1,12 @@
 const showInputError = (form, input, config) => {
-    const formError = document.getElementById(`${input.id}-error`);
+    const formError = form.querySelector(`#${input.id}-error`);
     formError.textContent = input.validationMessage;
-    input.classList.add('popup-form__input_type_invalid');
+    input.classList.add(config.errorClass);
 }
 
 const hideInputError = (form, input, config) => {
-    const formError = document.getElementById(`${input.id}-error`);
-    input.classList.remove('popup-form__input_type_invalid');
+    const formError = form.querySelector(`#${input.id}-error`);
+    input.classList.remove(config.errorClass);
     formError.textContent = "";
 }
 
@@ -47,6 +47,10 @@ function enableValidation(config) {
     forms.forEach((form) => {
         setEventListeners(form, config);
 
+        form.addEventListener('submit', (evt) => {
+            evt.preventDefault()
+        })
+
         const submitButton = form.querySelector(config.submitButtonSelector);
         setButtonState(submitButton, form.checkValidity(), config)
     });
@@ -60,6 +64,7 @@ const validationConfig = {
     submitButtonSelector: '.popup-form__btn-submit',
     inputInvalidClass: '.popup-form__input_type_error',
     buttonInvalidClass: 'popup-form__btn-submit_invalid',
+    errorClass: 'popup-form__input_type_invalid',
 }
 
 enableValidation(validationConfig);
