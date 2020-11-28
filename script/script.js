@@ -148,6 +148,7 @@ function createCard(card) {
 // Добавление карточки: Открываем попап на клик на btnAddCard;
 
 btnAddCard.addEventListener('click', function(event) {
+    popupCreateForm.reset();
     openPopup(popupCreate);
 });
 
@@ -161,8 +162,8 @@ popupCreateForm.addEventListener('submit', function(event) {
         link: popupCreateLink.value
     });
 
-    popupCreateName.value = "";
-    popupCreateLink.value = "";
+    // popupCreateName.value = "";
+    // popupCreateLink.value = "";
 
     closePopup(popupCreate);
 });

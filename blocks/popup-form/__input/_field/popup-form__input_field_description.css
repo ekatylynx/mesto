@@ -5,6 +5,6 @@
 @media screen and (max-width: 799px) {
   .popup-form__input_field_description {
     width: 100%;
-    margin-bottom: 45px;
+    /* margin-bottom: 45px; */
   }
   }
