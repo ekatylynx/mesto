@@ -12,7 +12,7 @@
 @import url(../blocks/popup-form/popup-form.css);
 @import url(../blocks/popup-form/__input/popup-form__input.css);
 /* Модификатор класса с ошибкой */
-@import url(../blocks/popup-form/__input/_type/popup-form__input_type_invalid.css); 
+@import url(../blocks/popup-form/__input/_type/popup-form__input_type_invalid.css);
 @import url(../blocks/popup-form/__input/_field/popup-form__input_field_name.css);
 @import url(../blocks/popup-form/__input/_field/popup-form__input_field_description.css);
 @import url(../blocks/popup-form/__btn-submit/popup-form__btn-submit.css);
