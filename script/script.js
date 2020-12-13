@@ -113,8 +113,8 @@ function closeByOverlayClick(event) {
 }
 
 // Функция создания карточки с городом и возвращение;
-
 function createCard(card) {
+// function createCard({link, name}) {
     const cardElement = cardTemplate.cloneNode(true);
     const itemCardTemplate = cardElement.querySelector('.photo-card')
     const imageElement = cardElement.querySelector('.photo-card__image');

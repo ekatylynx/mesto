@@ -12,6 +12,10 @@
   cursor: pointer;
   margin-top: 15px;
 }
+/* 
+.popup-form__btn-submit:disabled {
+  background-color: red;
+} */
 
 .popup-form__btn-submit:hover {
   opacity: .8;
