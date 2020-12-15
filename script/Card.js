@@ -1,11 +1,10 @@
 import { openPopup } from './utils.js';
 
 export default class Card {
-    constructor(name, link, selector, wrapper) {
+    constructor(name, link, selector) {
         this._name = name;
         this._link = link;
         this._selector = selector;
-        this._wrapper = document.querySelector(wrapper);
     }
 
     _getTemplate() {
@@ -30,11 +29,12 @@ export default class Card {
 
     generateCard() {
         const element = this._getTemplate();
-
         const image = element.querySelector('.photo-card__image');
+        
         image.src = this._link;
+        image.alt = this._name;
 
-        image.addEventListener('click', (event) => {
+        image.addEventListener('click', () => {
             this._openModal(this._name, this._link);
         });
 
@@ -50,18 +50,10 @@ export default class Card {
         const btnTrash = element.querySelector('.photo-card__btn-remove');
 
         // Удаляем айтем карточки из шаблона, при клике на btnTrash
-        btnTrash.addEventListener('click', (event) => {
-            this._wrapper.removeChild(element);
+        btnTrash.addEventListener('click', () => {
+            document.querySelector(".photogallery__wrapper").removeChild(element);
         });
 
         return element;
-    }
-
-    addToEnd(element) {
-        this._wrapper.append(element);
-    }
-
-    addToStart(element) {
-        this._wrapper.prepend(element);
     }
 }

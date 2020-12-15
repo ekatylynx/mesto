@@ -4,7 +4,7 @@ const openPopup = (popup) => {
     document.addEventListener('keyup', _closeByEscape);
 
     const btnCloses = popup.querySelector('.popup__btn-close');
-    btnCloses.addEventListener('click', (event) => {
+    btnCloses.addEventListener('click', () => {
         closePopup(popup);
     });
 };
