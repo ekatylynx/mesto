@@ -27,18 +27,12 @@ export default class Card {
         openPopup(popupImage);
     }
 
-    generateCard() {
-        const element = this._getTemplate();
+    _setEventListeners(element) {
         const image = element.querySelector('.photo-card__image');
-        
-        image.src = this._link;
-        image.alt = this._name;
 
         image.addEventListener('click', () => {
             this._openModal(this._name, this._link);
         });
-
-        element.querySelector('.photo-card__title').textContent = this._name;
 
         const btnLike = element.querySelector('.photo-card__btn-like');
 
@@ -53,6 +47,18 @@ export default class Card {
         btnTrash.addEventListener('click', () => {
             document.querySelector(".photogallery__wrapper").removeChild(element);
         });
+    }
+
+    generateCard() {
+        const element = this._getTemplate();
+        const image = element.querySelector('.photo-card__image');
+        
+        image.src = this._link;
+        image.alt = this._name;
+
+        element.querySelector('.photo-card__title').textContent = this._name;
+
+        this._setEventListeners(element);
 
         return element;
     }

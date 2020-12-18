@@ -2,6 +2,30 @@ import Card from './Card.js';
 import Form from './Form.js';
 import { openPopup, closePopup } from './utils.js';
 
+const popups = document.querySelectorAll('.popup');
+const btnEdit = document.querySelector('.profile-info__btn-edit');
+const profileName = document.querySelector('.profile-info__name');
+const profileAbout = document.querySelector('.profile-info__description');
+const popupEdit = document.querySelector('.popup.popup-edit');
+const popupEditForm = document.querySelector('.popup-edit .popup-form');
+const popupEditName = document.querySelector('.popup-edit .popup-form__input_field_name');
+const popupEditAbout = document.querySelector('.popup-edit .popup-form__input_field_description');
+const btnAddCard = document.querySelector('.profile__btn-add');
+const popupCreate = document.querySelector('.popup.popup-create');
+const popupCreateForm = document.querySelector('.popup-create .popup-form');
+const popupCreateName = document.querySelector('.popup-create .popup-form__input_field_name');
+const popupCreateLink = document.querySelector('.popup-create .popup-form__input_field_description');
+const cardsWrapper = document.querySelector(".photogallery__wrapper");
+
+// Конфиг для валидации
+const validationConfig = {
+    inputSelector: '.popup-form__input',
+    submitButtonSelector: '.popup-form__btn-submit',
+    inputInvalidClass: '.popup-form__input_type_error',
+    buttonInvalidClass: 'popup-form__btn-submit_invalid',
+    errorClass: 'popup-form__input_type_invalid',
+}
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -29,26 +53,14 @@ const initialCards = [
     }
 ];
 
+// Кнопки закрытия попапов
+popups.forEach((popup) => {
+    const btnClose = popup.querySelector('.popup__btn-close');
 
-const cardsWrapper = document.querySelector(".photogallery__wrapper");
-
-initialCards.forEach((item, i) => {
-    const card = new Card(item.name, item.link, "#photo-card", ".photogallery__wrapper"); 
-    const cardElement = card.generateCard();
-
-    cardsWrapper.append(cardElement);
+    btnClose.addEventListener('click', () => {
+        closePopup(popup);
+    });
 });
-
-
-// Редактирование профиля
-const btnEdit = document.querySelector('.profile-info__btn-edit');
-const profileName = document.querySelector('.profile-info__name');
-const profileAbout = document.querySelector('.profile-info__description');
-
-const popupEdit = document.querySelector('.popup.popup-edit');
-const popupEditForm = document.querySelector('.popup-edit .popup-form');
-const popupEditName = document.querySelector('.popup-edit .popup-form__input_field_name');
-const popupEditAbout = document.querySelector('.popup-edit .popup-form__input_field_description');
 
 btnEdit.addEventListener('click', (event) => {
     popupEditName.value = profileName.textContent;
@@ -65,14 +77,6 @@ popupEditForm.addEventListener('submit', (event) => {
 
     closePopup(popupEdit);
 });
-
-// Создание новой карточки
-const btnAddCard = document.querySelector('.profile__btn-add');
-
-const popupCreate = document.querySelector('.popup.popup-create');
-const popupCreateForm = document.querySelector('.popup-create .popup-form');
-const popupCreateName = document.querySelector('.popup-create .popup-form__input_field_name');
-const popupCreateLink = document.querySelector('.popup-create .popup-form__input_field_description');
 
 btnAddCard.addEventListener('click', () => {
     popupCreateForm.reset();
@@ -95,20 +99,17 @@ popupCreateForm.addEventListener('submit', (event) => {
     closePopup(popupCreate);
 });
 
-// Валидация форм
-
-// Конфиг для валидации
-const validationConfig = {
-    inputSelector: '.popup-form__input',
-    submitButtonSelector: '.popup-form__btn-submit',
-    inputInvalidClass: '.popup-form__input_type_error',
-    buttonInvalidClass: 'popup-form__btn-submit_invalid',
-    errorClass: 'popup-form__input_type_invalid',
-}
-
-// Экземпляры класса конкретной формы
+// Экземпляры класса валидации конкретной формы
 const formProfile = new Form(validationConfig, ".popup-form-profile");
 formProfile.enableValidation();
 
 const formCard = new Form(validationConfig, ".popup-form-card");
 formCard.enableValidation();
+
+// Начальное отображение карточек
+initialCards.forEach((item, i) => {
+    const card = new Card(item.name, item.link, "#photo-card", ".photogallery__wrapper"); 
+    const cardElement = card.generateCard();
+
+    cardsWrapper.append(cardElement);
+});

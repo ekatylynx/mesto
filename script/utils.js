@@ -2,11 +2,6 @@ const openPopup = (popup) => {
     popup.classList.add('popup_opened');
     popup.addEventListener('click', _closeByOverlayClick);
     document.addEventListener('keyup', _closeByEscape);
-
-    const btnCloses = popup.querySelector('.popup__btn-close');
-    btnCloses.addEventListener('click', () => {
-        closePopup(popup);
-    });
 };
 
 const closePopup = (popup) => {
