@@ -1,6 +1,6 @@
 import { openPopup } from './utils.js';
 
-export default class Card {
+class Card {
     constructor(name, link, selector) {
         this._name = name;
         this._link = link;
@@ -63,3 +63,5 @@ export default class Card {
         return element;
     }
 }
+
+export default Card;

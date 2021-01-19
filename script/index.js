@@ -1,5 +1,6 @@
 import Card from './Card.js';
 import Form from './Form.js';
+import Section from './Section.js';
 import { openPopup, closePopup } from './utils.js';
 
 const popups = document.querySelectorAll('.popup');
@@ -107,9 +108,23 @@ const formCard = new Form(validationConfig, ".popup-form-card");
 formCard.enableValidation();
 
 // Начальное отображение карточек
-initialCards.forEach((item, i) => {
-    const card = new Card(item.name, item.link, "#photo-card", ".photogallery__wrapper"); 
-    const cardElement = card.generateCard();
+// initialCards.forEach((item, i) => {
+//     const card = new Card(item.name, item.link, "#photo-card", ".photogallery__wrapper"); 
+//     const cardElement = card.generateCard();
 
-    cardsWrapper.append(cardElement);
-});
+//     cardsWrapper.append(cardElement);
+// });
+
+const cardsList = new Section({
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item.name, item.link, "#photo-card");
+      const cardElement = card.generateCard();
+  
+      cardsList.addItem(cardElement);
+      },
+    },
+    ".photogallery__wrapper"
+  );
+
+cardsList.renderItems();
