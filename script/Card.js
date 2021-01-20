@@ -1,10 +1,11 @@
-import { openPopup } from './utils.js';
+// import { openPopup } from './utils.js';
 
 class Card {
-    constructor(name, link, selector) {
+    constructor(name, link, selector, handleCardClick) { // popup
         this._name = name;
         this._link = link;
         this._selector = selector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -17,22 +18,28 @@ class Card {
         return cardElement;
     }
 
-    _openModal(name, link) {
-        const popupImage = document.querySelector('.popup.popup-image');
-        const popupOpenImage = document.querySelector('.popup-image__image');
-        const popupCaption = document.querySelector('.popup-image__caption');
+    // _openModal(name, link) {
+    //     const popupImage = document.querySelector('.popup.popup-image');
+    //     const popupOpenImage = document.querySelector('.popup-image__image');
+    //     const popupCaption = document.querySelector('.popup-image__caption');
 
-        popupOpenImage.src = link;
-        popupCaption.textContent = name;
-        openPopup(popupImage);
-    }
+    //     popupOpenImage.src = link;
+    //     popupCaption.textContent = name;
+    //     openPopup(popupImage);
+    //  }
 
     _setEventListeners(element) {
         const image = element.querySelector('.photo-card__image');
 
-        image.addEventListener('click', () => {
-            this._openModal(this._name, this._link);
-        });
+        image.addEventListener('click', this._handleCardClick);
+
+        // image.addEventListener('click', () => {
+        // //     this._openModal(this._name, this._link);
+        //     this._popup.open({
+        //         name: this._name,
+        //         link: this._link,
+        //     });
+        // });
 
         const btnLike = element.querySelector('.photo-card__btn-like');
 

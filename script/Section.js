@@ -14,9 +14,12 @@ class Section {
         this._renderedItems.forEach(item => this._renderer(item))
     }
 
-    addItem(element) {
-        if (element)
-            this._container.append(element);
+    appendItem(element) { // addItem
+        this._container.append(element);
+    }
+
+    prependItem(element) {
+        this._container.prepend(element);
     }
 }
 
