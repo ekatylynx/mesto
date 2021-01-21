@@ -21,23 +21,22 @@ class Card {
 
         image.addEventListener('click', this._handleCardClick);
 
-        const btnLike = element.querySelector('.photo-card__btn-like');
-
-            // Меняем класс у лайка при нажатии
-
         // В соответствии с требованиями 7-го спринта  все колбэки 
         // должны быть помещены в отдельные функции и передаваться как второй параметр в addEventListener
+
+        // Меняем класс у лайка при нажатии
+        const btnLike = element.querySelector('.photo-card__btn-like');
         const toggleLike = (event) => {
             event.target.classList.toggle('photo-card__btn-like_active');
         }
         btnLike.addEventListener('click', toggleLike);
 
+        // Удаляем айтем карточки из шаблона, при клике на btnTrash
         const btnTrash = element.querySelector('.photo-card__btn-remove');
-
-            // Удаляем айтем карточки из шаблона, при клике на btnTrash
-        btnTrash.addEventListener('click', () => {
+        const deleteCard = (event) => {
             document.querySelector(".photogallery__wrapper").removeChild(element);
-        });
+        }
+        btnTrash.addEventListener('click', deleteCard);
     }
 
     generateCard() {
