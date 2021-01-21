@@ -1,9 +1,11 @@
-import Card from './Card.js';
-import Form from './Form.js';
-import Section from './Section.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
+import "./index.css";
+
+import Card from '../components/Card.js';
+import Form from '../components/Form.js';
+import Section from '../components/Section.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
 
 const btnEdit = document.querySelector('.profile-info__btn-edit');
@@ -11,9 +13,6 @@ const btnEdit = document.querySelector('.profile-info__btn-edit');
 const popupEditName = document.querySelector('.popup-edit .popup-form__input_field_name');
 const popupEditAbout = document.querySelector('.popup-edit .popup-form__input_field_description');
 const btnAddCard = document.querySelector('.profile__btn-add');
-
-const popupCreateName = document.querySelector('.popup-create .popup-form__input_field_name');
-const popupCreateLink = document.querySelector('.popup-create .popup-form__input_field_description');
 
 
 // Конфиг для валидации
@@ -53,7 +52,7 @@ const initialCards = [
 ];
 
 // Экземпляр класса пользователя
-const UserInfos = new UserInfo({
+const userInfos = new UserInfo({
     nameSelector: '.profile-info__name',
     aboutSelector: '.profile-info__description',
 });
@@ -63,32 +62,38 @@ const popupImage = new PopupWithImage('.popup.popup-image');
 popupImage.setEventListeners();
 
 // Форма редактирования имени
-const popupEdit = new PopupWithForm('.popup.popup-edit', () => {
-    UserInfos.setUserInfo(popupEditName.value, popupEditAbout.value);
+const popupEdit = new PopupWithForm('.popup.popup-edit', (values) => {
+    userInfos.setUserInfo(values['popup-form-name'], values['popup-form-about']);
 });
 
 popupEdit.setEventListeners();
 btnEdit.addEventListener('click', (event) => {
-    const userInfo = UserInfos.getUserInfo();
+    const userInfo = userInfos.getUserInfo();
     popupEditName.value = userInfo.name;
     popupEditAbout.value = userInfo.about;
     popupEdit.open();
 });
 
-// Форма создания
-const popupCreate_ = new PopupWithForm('.popup.popup-create', () => {
-    const card = new Card(popupCreateName.value, popupCreateLink.value, "#photo-card", () => {
+// Функция создания экземпляра класса card
+const createCard = (name, link) => {
+    const card = new Card(name, link, "#photo-card", () => {
         popupImage.open({
-            name: card._name,
-            link: card._link,
+            name: name,
+            link: link,
         });
     });
-    const cardElement = card.generateCard();
+    return card.generateCard();
+};
+
+// Форма создания
+const popupCreateCard = new PopupWithForm('.popup.popup-create', (values) => {
+    const cardElement = createCard(values['popup-form-mesto'], values['popup-form-link']);
     cardsList.prependItem(cardElement);
 });
-popupCreate_.setEventListeners();
+
+popupCreateCard.setEventListeners();
 btnAddCard.addEventListener('click', () => {
-    popupCreate_.open();
+    popupCreateCard.open();
 });
 
 
@@ -103,14 +108,7 @@ formCard.enableValidation();
 const cardsList = new Section({
     items: initialCards,
     renderer: (item) => {
-        const card = new Card(item.name, item.link, "#photo-card", () => {
-            popupImage.open({
-                name: item.name,
-                link: item.link,
-            });
-        });
-      const cardElement = card.generateCard();
-  
+      const cardElement = createCard(item.name, item.link);
       cardsList.appendItem(cardElement);
       },
     },

@@ -1,5 +1,3 @@
-// import { openPopup } from './utils.js';
-
 class Card {
     constructor(name, link, selector, handleCardClick) { // popup
         this._name = name;
@@ -18,39 +16,25 @@ class Card {
         return cardElement;
     }
 
-    // _openModal(name, link) {
-    //     const popupImage = document.querySelector('.popup.popup-image');
-    //     const popupOpenImage = document.querySelector('.popup-image__image');
-    //     const popupCaption = document.querySelector('.popup-image__caption');
-
-    //     popupOpenImage.src = link;
-    //     popupCaption.textContent = name;
-    //     openPopup(popupImage);
-    //  }
-
     _setEventListeners(element) {
         const image = element.querySelector('.photo-card__image');
 
         image.addEventListener('click', this._handleCardClick);
 
-        // image.addEventListener('click', () => {
-        // //     this._openModal(this._name, this._link);
-        //     this._popup.open({
-        //         name: this._name,
-        //         link: this._link,
-        //     });
-        // });
-
         const btnLike = element.querySelector('.photo-card__btn-like');
 
-        // Меняем класс у лайка при нажатии
-        btnLike.addEventListener('click', (event) => {
+            // Меняем класс у лайка при нажатии
+
+        // В соответствии с требованиями 7-го спринта  все колбэки 
+        // должны быть помещены в отдельные функции и передаваться как второй параметр в addEventListener
+        const toggleLike = (event) => {
             event.target.classList.toggle('photo-card__btn-like_active');
-        });
+        }
+        btnLike.addEventListener('click', toggleLike);
 
         const btnTrash = element.querySelector('.photo-card__btn-remove');
 
-        // Удаляем айтем карточки из шаблона, при клике на btnTrash
+            // Удаляем айтем карточки из шаблона, при клике на btnTrash
         btnTrash.addEventListener('click', () => {
             document.querySelector(".photogallery__wrapper").removeChild(element);
         });
