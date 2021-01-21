@@ -38,8 +38,10 @@
                     minlength="2" 
                     maxlength="200">
                 <span class="form-error" id="input-about-error"></span>
-                <button class="popup-form__btn-submit" 
-                        type="submit" 
+                <button class="popup-form__btn-submit"
+                        id="submitBtnClose"
+                        type="submit"
+                        disabled
                         >Сохранить</button>
             </form>
         </div>
@@ -76,7 +78,9 @@
                     required>
                 <span class="form-error" id="input-url-error"></span>
                 <button class="popup-form__btn-submit" 
-                        type="submit" 
+                        type="submit"
+                        id="submitBtnClose"
+                        disabled
                         >Создать</button>
             </form>
         </div>

@@ -32,7 +32,9 @@ export default class PopupWithForm extends Popup {
     close() {
         this._form.removeEventListener('submit', this._submit.bind(this));
         this._form.reset();
-        this._form.querySelector('.popup-form__btn-submit').classList.add('popup-form__btn-submit_invalid');
+        const submitButton = this._form.querySelector('.popup-form__btn-submit');
+        submitButton.classList.add('popup-form__btn-submit_invalid');
+        submitButton.disabled = true;
         super.close();
     }
 }
