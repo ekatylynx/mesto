@@ -1,0 +1,9 @@
+.photo-card__like-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 22px;
+  right: 20px;
+  width: 25px;
+  align-items: center;
+}

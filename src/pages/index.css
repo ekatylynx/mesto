@@ -34,6 +34,9 @@
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__wrapper/profile__wrapper.css);
+@import url(../blocks/profile/__wrappers/profile__wrappers.css);
+@import url(../blocks/profile/__avatar-overlay/profile__avatar-overlay.css);
+@import url(../blocks/profile/__edit-overlay/profile__edit-overlay.css);
 @import url(../blocks/profile/__btn-add/profile__btn-add.css);
     /* Profile Info */
 @import url(../blocks/profile-info/profile-info.css);
@@ -49,8 +52,10 @@
 @import url(../blocks/photo-card/__image/photo-card__image.css);
 @import url(../blocks/photo-card/__wrapper/photo-card__wrapper.css);
 @import url(../blocks/photo-card/__title/photo-card__title.css);
+@import url(../blocks/photo-card/__like-wrapper/photo-card__like-wrapper.css);
 @import url(../blocks/photo-card/__btn-like/photo-card__btn-like.css);
 @import url(../blocks/photo-card/__btn-like/_active/photo-card__btn-like_active.css);
+@import url(../blocks/photo-card/__like-count/photo-card__like-count.css);
 @import url(../blocks/photo-card/__btn-remove/photo-card__btn-remove.css);
     /* Footer */
 @import url(../blocks/footer/footer.css);

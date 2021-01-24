@@ -5,6 +5,8 @@ export default class PopupWithForm extends Popup {
         super(popupSelector);
         this._submitCallback = submitCallback;
         this._form = this._popup.querySelector('.popup-form');
+        this._submitButton = this._form.querySelector('.popup-form__btn-submit');
+        this._buttonText = this._submitButton.textContent;
     }
     
     _getInputValues() {
@@ -20,8 +22,9 @@ export default class PopupWithForm extends Popup {
 
     _submit(event) {
         event.preventDefault();
-        this._submitCallback(this._getInputValues());
-        this.close();
+        this._submitButton.textContent = "Сохранение...";
+        this._submitButton.disabled = true;
+        this._submitCallback(this._getInputValues(), this.close.bind(this));
     }
 
     setEventListeners() {
@@ -32,9 +35,13 @@ export default class PopupWithForm extends Popup {
     close() {
         this._form.removeEventListener('submit', this._submit.bind(this));
         this._form.reset();
-        const submitButton = this._form.querySelector('.popup-form__btn-submit');
-        submitButton.classList.add('popup-form__btn-submit_invalid');
-        submitButton.disabled = true;
+        this._submitButton.textContent = this._buttonText;
+        if (this._form.classList.contains('validated')) {
+            this._submitButton.classList.add('popup-form__btn-submit_invalid');
+            this._submitButton.disabled = true;
+        } else {
+            this._submitButton.disabled = false;
+        }
         super.close();
     }
 }

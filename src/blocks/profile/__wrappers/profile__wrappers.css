@@ -1,0 +1,11 @@
+.profile__wrappers {
+  width:120px; 
+  height:120px;
+  position: relative;
+  margin-right: 30px; 
+  cursor: pointer;
+}
+
+.profile__wrappers:hover .profile__avatar-overlay {
+  opacity: 1;
+}

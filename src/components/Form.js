@@ -32,7 +32,7 @@ class Form {
             button.disabled = false;
         } else {
             button.classList.add(this._config.buttonInvalidClass);
-            button.disabled = true; 
+            button.disabled = true;
         }
     }
     
@@ -57,6 +57,10 @@ class Form {
 
         const submitButton = this._form.querySelector(this._config.submitButtonSelector);
         this._setButtonState(submitButton, this._form.checkValidity());
+
+
+        // Для невалидируемой формы PopupConfirm
+        this._form.classList.add("validated");
     }
 }
 

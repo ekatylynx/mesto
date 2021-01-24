@@ -6,6 +6,7 @@ import Section from '../components/Section.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
+import Api from "../components/Api";
 
 
 const btnEdit = document.querySelector('.profile-info__btn-edit');
@@ -14,6 +15,7 @@ const popupEditName = document.querySelector('.popup-edit .popup-form__input_fie
 const popupEditAbout = document.querySelector('.popup-edit .popup-form__input_field_description');
 const btnAddCard = document.querySelector('.profile__btn-add');
 
+const btnAvatar = document.querySelector('.profile__wrappers');
 
 // Конфиг для валидации
 const validationConfig = {
@@ -24,46 +26,65 @@ const validationConfig = {
     errorClass: 'popup-form__input_type_invalid',
 }
 
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+const api = new Api({
+    baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-19',
+    headers: {
+        authorization: '0eeb4c96-bb84-4d08-b5d5-7ff8bde46738',
+        'Content-Type': 'application/json'
     }
-];
+});
 
 // Экземпляр класса пользователя
 const userInfos = new UserInfo({
     nameSelector: '.profile-info__name',
     aboutSelector: '.profile-info__description',
+    avatarSelector: '.profile__avatar',
 });
 
 // Попап картинки
 const popupImage = new PopupWithImage('.popup.popup-image');
 popupImage.setEventListeners();
 
+
+const popupConfirm = new PopupWithForm('.popup.popup-confirm', (values, close) => {
+    api.removeCard(values['popup-form-id'])
+        .then(res => {
+            document.getElementById(values['popup-form-id']).remove();
+            close();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+popupConfirm.setEventListeners();
+
+const popupAvatar = new PopupWithForm('.popup.popup-avatar', (values, close) => {
+    // console.log(values);
+    api.updateAvatar(values['popup-form-avatar'])
+        .then(res => {
+            userInfos.setUserInfo(res._id, res.name, res.about, res.avatar);
+            close();
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+popupAvatar.setEventListeners();
+
+btnAvatar.addEventListener('click', () => {
+    popupAvatar.open();
+})
+
 // Форма редактирования имени
-const popupEdit = new PopupWithForm('.popup.popup-edit', (values) => {
-    userInfos.setUserInfo(values['popup-form-name'], values['popup-form-about']);
+const popupEdit = new PopupWithForm('.popup.popup-edit', (values, close) => {
+    api.setUser(values)
+        .then(res => {
+            userInfos.setUserInfo(res._id, values['popup-form-name'], values['popup-form-about'], res.avatar);
+            close();
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 popupEdit.setEventListeners();
@@ -75,8 +96,13 @@ btnEdit.addEventListener('click', (event) => {
 });
 
 // Функция создания экземпляра класса card
-const createCard = (name, link) => {
-    const card = new Card(name, link, "#photo-card", () => {
+const createCard = (id, name, link, ownerId, likes) => {
+    const onRemove = () => {
+        document.querySelector('.popup-form__input_field_id').value = id;
+        popupConfirm.open();
+    }
+
+    const card = new Card(id, name, link, likes, api, userInfos.getUserInfo().id, ownerId, onRemove, "#photo-card", () => {
         popupImage.open({
             name: name,
             link: link,
@@ -86,16 +112,22 @@ const createCard = (name, link) => {
 };
 
 // Форма создания
-const popupCreateCard = new PopupWithForm('.popup.popup-create', (values) => {
-    const cardElement = createCard(values['popup-form-mesto'], values['popup-form-link']);
-    cardsList.prependItem(cardElement);
+const popupCreateCard = new PopupWithForm('.popup.popup-create', (values, close) => {
+    api.createCard(values)
+        .then(res => {
+            const cardElement = createCard(res._id, values['popup-form-mesto'], values['popup-form-link'], res.owner._id, res.likes);
+            cardsList.prependItem(cardElement);
+            close();
+        })
+        .catch(err => {
+            console.log(err);
+        });
 });
 
 popupCreateCard.setEventListeners();
 btnAddCard.addEventListener('click', () => {
     popupCreateCard.open();
 });
-
 
 // Экземпляры класса валидации конкретной формы
 const formProfile = new Form(validationConfig, ".popup-form-profile");
@@ -104,15 +136,36 @@ formProfile.enableValidation();
 const formCard = new Form(validationConfig, ".popup-form-card");
 formCard.enableValidation();
 
-// Экземпляр класса для враппера
-const cardsList = new Section({
-    items: initialCards,
-    renderer: (item) => {
-      const cardElement = createCard(item.name, item.link);
-      cardsList.appendItem(cardElement);
-      },
-    },
-    ".photogallery__wrapper"
-  );
+const formAvatar = new Form(validationConfig, ".popup-form-avatar");
+formAvatar.enableValidation();
 
-cardsList.renderItems();
+api.getUser()
+    .then(res => {
+        userInfos.setUserInfo(res._id, res.name, res.about, res.avatar);
+    })
+    .catch(err => {
+        console.log(err);
+    });
+
+
+let cardsList;
+
+api.getCards()
+    .then(res => {
+        // Экземпляр класса для враппера
+        cardsList = new Section(
+            {
+                items: res,
+                renderer: (item) => {
+                    const cardElement = createCard(item._id, item.name, item.link, item.owner._id, item.likes);
+                    cardsList.appendItem(cardElement);
+                },
+            },
+            ".photogallery__wrapper"
+        );
+
+        cardsList.renderItems();
+    })
+    .catch(err => {
+        console.log(err);
+    });

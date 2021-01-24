@@ -1,0 +1,10 @@
+.profile__edit-overlay {
+  width: 26px;
+  height: 26px;
+  /* opacity: 0;
+  transition: opacity .1s ease; */
+}
+
+/* .profile__edit-overlay:hover {
+  opacity: 1;
+} */

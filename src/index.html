@@ -98,6 +98,46 @@
         </div>
     </section>
 
+<!-- Попап подтверждения действия  -->
+
+    <section class="popup popup-confirm">
+        <div class="popup__container">
+            <form class="popup-form popup-form-confirm" name="popup-forms" novalidate>
+                <h2 class="popup__title">Вы уверены?</h2>
+                <input class="popup-form__input 
+                    popup-form__input_field_id"
+                    id="input-id"
+                    type="hidden"
+                    name="popup-form-id">
+                <button class="popup-form__btn-submit" type="submit">Да</button>
+            </form>
+            <button class="popup__btn-close"></button>
+        </div>
+    </section>
+
+<!-- Попап изменения аватара  -->
+
+    <!-- Id ошибки-span должен совпадать с id конкретного input, с префиксом -error -->
+    <section class="popup popup-avatar">
+        <div class="popup__container">
+            <h2 class="popup__title">Обновить аватар</h2>
+            <form class="popup-form popup-form-avatar" name="popup-forms" novalidate>
+                <input class="popup-form__input popup-form__input_field_avatar"
+                    id="input-avatar"
+                    name="popup-form-avatar"
+                    type="url" 
+                    placeholder="Ссылка на картинку"
+                    required>
+                <span class="form-error" id="input-avatar-error"></span>
+                <button class="popup-form__btn-submit"
+                        type="submit"
+                        disabled>Сохранить</button>
+            </form>
+            <button class="popup__btn-close"></button>
+        </div>
+    </section>
+
+
     <div class="page">
         <header class="header">
             <img class="header__logo" 
@@ -107,19 +147,24 @@
 
         <main class="content">
             <section class ="profile">
-                <img class="profile__avatar" 
-                src="<%=require('./images/profile-avatar.png')%>" 
-                alt="Аватар профиля">
+                <div class="profile__wrappers">
+                    <div class="profile__avatar-overlay">
+                        <img class="profile__edit-overlay" src="<%=require('./images/profile-edit-image.svg')%>" alt="">
+                    </div>
+                    <img class="profile__avatar" 
+                    src="<%=require('./images/profile-avatar.png')%>" 
+                    alt="Аватар профиля">
+                </div>
                 <div class="profile__wrapper">
                     <div class="profile-info">
                         <div class="profile-info__wrapper">
-                            <h1 class="profile-info__name">Жак-Ив Кусто</h1>
+                            <h1 class="profile-info__name"></h1>
                             <button class="profile-info__btn-edit" 
                                     type="button">
                             </button>
                         </div>
                         <p class="profile-info__description"
-                        >Исследователь океана</p>
+                        ></p>
                     </div>
                     <button class="profile__btn-add"
                             type="button"></button>
@@ -144,8 +189,12 @@
                 alt="#">
                 <div class="photo-card__wrapper">
                     <h2 class="photo-card__title"></h2>
-                    <button class="photo-card__btn-like" 
+                    <div class="photo-card__like-wrapper">
+                        <button class="photo-card__btn-like" 
                             type="button"></button>
+                        <span class="photo-card__like-count">333</span>
+                    </div>
+                    
                 </div>
             </li>
         </template>
