@@ -22,10 +22,14 @@ class Card {
         return cardElement;
     }
 
+    _calculateLikes(element) {
+        element.querySelector('.photo-card__like-count').textContent = this._likes.length;
+    }
+
     _setEventListeners(element) {
         const image = element.querySelector('.photo-card__image');
 
-        image.addEventListener('click', this._handleCardClick);
+        image.addEventListener('click', this._handleCardClick.bind(this, this._name, this._link));
 
         // В соответствии с требованиями 7-го спринта  все колбэки 
         // должны быть помещены в отдельные функции и передаваться как второй параметр в addEventListener
@@ -37,8 +41,8 @@ class Card {
                 this._api.unLikeCard(this._id)
                     .then(res => {
                         event.target.classList.toggle('photo-card__btn-like_active');
-                        this._likes = res.likes.length;
-                        element.querySelector('.photo-card__like-count').textContent = this._likes;
+                        this._likes = res.likes;
+                        this._calculateLikes(element);
                     })
                     .catch(err => {
                         console.log(err);
@@ -48,7 +52,7 @@ class Card {
                     .then(res => {
                         event.target.classList.toggle('photo-card__btn-like_active');
                         this._likes = res.likes;
-                        element.querySelector('.photo-card__like-count').textContent = this._likes.length;
+                        this._calculateLikes(element);
                     })
                     .catch(err => {
                         console.log(err);
@@ -63,6 +67,11 @@ class Card {
         if (btnTrash) {
             btnTrash.addEventListener('click', this._onRemove);
         }
+    }
+
+    // Удаление карточки по её id
+    static removeCard(id) {
+        document.getElementById(id).remove();
     }
 
     generateCard() {

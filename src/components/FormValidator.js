@@ -1,4 +1,4 @@
-class Form {
+class FormValidator {
     constructor(config, formSelector) {
         this._config = config;
         this._form = document.querySelector(formSelector);
@@ -64,4 +64,4 @@ class Form {
     }
 }
 
-export default Form;
+export default FormValidator;
