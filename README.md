@@ -34,7 +34,7 @@
 
 **GitHub Pages**
 
-* [Ссылка на сайт в GH Pages](https://hitomizavr.github.io/mesto/index.html)  
+* [Ссылка на сайт в GH Pages](https://hitomizavr.github.io/mesto/)  
 
 ### Доработки на будущее
 
